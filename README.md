@@ -44,11 +44,11 @@ KoalaNLP의 Contributor가 되고 싶으시다면, 언제든지 Issue에 등록�
 API 문서는 [![JS Doc](https://img.shields.io/badge/JS-Doc-blue.svg?style=flat-square)](https://koalanlp.github.com/nodejs-koalanlp/docs/module-koalanlp.html)에서, 간단한 사용법은 [Wiki](https://github.com/koalanlp/nodejs-koalanlp/wiki)에서 확인하시면 됩니다.
 
 ## Dependency 추가
-* `Java` 8 이상이 설치되어 있어야 합니다. 
+* `Java` 8 이상이 설치되어 있어야 합니다.
 
 아래와 같이 `koalanlp`를 추가해주세요.
 ```shell
-$ npm install koalanlp --save 
+$ npm install koalanlp --save
 ```
 
 ## 간단한 예시
@@ -86,15 +86,15 @@ koalanlp.initialize({
     let parser = new koalanlp.Parser(API.KKMA, API.EUNJEON);
 
     // Dependency Parsing
-    parser.parse("안녕하세요. 눈이 오는 설날 아침입니다."
+    parser.parse("안녕하세요. 눈이 오는 설날 아침입니다.")
         .catch(function(error){
             console.error(error);            
         }).then(function(parsed){
             console.log("Async", parsed.result.map(s => s.toString()).join("\n"));
-            
+
             // Data classes
             let sentence = parsed[1]; // 두번째 문장인, "눈이 오는 설날 아침입니다."를 선택합니다.
-        
+
             let wordAt0 = sentence.get(0); // 첫번째 어절을 선택해봅니다.
             console.log(wordAt0.exists(m => POS.isPredicate(m.tag))); // 첫번째 어절에, 용언(동사/형용사)을 포함한 형태소가 있는지 확인합니다.
             console.log(sentence.exists(w => w.exists(m => POS.isNoun(m.tag)))); // 문장 전체에 체언(명사 등)을 포함한 어절이 있는지 확인합니다.
